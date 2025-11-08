@@ -1,8 +1,8 @@
-ReadyServer
+# ReadyServer
 
 A simple TCP server that is always READY.
 
-_Build and Run_
+## Build and Run
 
 gcc -o server server.c
 sudo ./server
