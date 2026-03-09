@@ -4,6 +4,7 @@
 #include <stdlib.h>     // exit, strtol
 #include <signal.h>     // sigaction, SIGINT, SIGTERM
 #include <errno.h>      // errno, EINTR
+#include <arpa/inet.h>  // inet_ntoa
 #include <netinet/in.h> // sockaddr_in, INADDR_ANY
 #include <sys/socket.h> // socket, bind, listen, accept, setsockopt, AF_INET, SOCK_STREAM
 #include <sys/types.h>  // htonl, htons, socklen_t
@@ -122,7 +123,7 @@ int main(int argc, char *argv[])
       perror("accept");
       continue;
     }
-    printf("New connection accepted.\n");
+    printf("New connection accepted from %s.\n", inet_ntoa(client_addr.sin_addr));
 
     // SO_RCVTIMEO sets a timeout on blocking recv/read calls so a slow or idle
     // client cannot block the server indefinitely.
